@@ -1,0 +1,43 @@
+Github提交更新的代码
+祈澈菇凉
+0.274
+2019.03.16 19:25:05
+字数 360阅读 3,864
+
+项目已经上传到github，现在修改了文件里面的某些代码，(修改了按钮的颜色，改成了蓝色)要把修改部分的代码提交上去，那么如何覆盖Github上的同一文件代码呢？
+
+步骤：
+1、 git status
+
+查看更改了哪些文件的代码
+
+2、git add .
+
+git add 你想要提交的更改的文件 或者 git add . 所有的文件；
+
+图片.png
+3、git commit -m 'tcss'
+
+git commit -m ‘提交信息’把本地仓库暂存区的文件提交到本地仓库
+4、git push -u origin master
+
+把本地仓库中的文件同步到远程仓库中，即 git push origin master/你的分支 。
+
+好了，看一下修改的效果
+
+注意：如果远程有别人已经提交了，你在push之前 先pull下来！防止和别人的文件相互冲突了。
+再按照add commit push 的步骤上传即可。
+
+    原文作者：祈澈姑娘 技术博客：https://www.jianshu.com/u/05f416aefbe1
+    90后前端妹子，爱编程，爱运营，文艺与代码齐飞，魅力与智慧共存的程序媛一枚。
+    坚持总结工作中遇到的技术问题，坚持记录工作中所所思所见，对于博客上面有不会的问题，可以加入qq技术交流群聊：649040560。
+
+
+先pull下来的步骤：
+
+git remote add origin https://github.com/miaoihan/weibo.git （自己的git地址） 
+$git fetch origin    //获取远程更新
+$git merge origin/master //把更新的内容合并到本地分支
+
+参考：https://www.jianshu.com/p/9630c1af3dd3
+      https://blog.csdn.net/a12458/article/details/51893309
