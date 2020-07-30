@@ -19,3 +19,20 @@ git commit -m "init panda"
 git push origin panda
 
 4)在git代码管理界面经可以看到panda分支了，成功~~
+//////////////////////////////////////////////////////
+git分支的创建、删除、切换、合并 (来源:https://baijiahao.baidu.com/s?id=1611550648685439298&wfr=spider&for=pc)
+
+天天小白菜
+发布时间：18-09-1411:30
+
+先看一下git的命令：1.查看本地分支 git branch ；查看远程分支 git branch -r ；切换分支 git checkout -b agrochemical origin/agrochemical；查看所属分支 git branch -a；回退命令： $ git reset --hard HEAD^；回退到上个版本 $ git reset --hard HEAD~3；回退到前3次提交之前，以此类推，；回退到n次提交之前 $ git reset --hard commit_id；退到/进到 指定commit的sha码 $ git checkout commit ID；查看提交记录：$ git log；强推到远程：$ git push origin HEAD --force
+
+2.git之删除远程仓库文件，使用 git rm 命令即可，有两种选择：一种是 git rm --cached "文件路径"，不删除物理文件，仅将该文件从缓存中删除；一种是 git rm --f "文件路径"，不仅将该文件从缓存中删除，还会将物理文件删除（不会回收到垃圾桶）。假如你有文件不小心commit到了服务器那么你想要删除它,可以使用:git rm -- cached "路径+文件名" ；git commit -m "delete file" ；git push；git rm -r "路径+文件名" ；git commit -m "delete file"；git push
+
+接下来就是正事了，你在工作中一定用的到：一、分支创建与切换1、创建新的分支并切换到该分支上进行提交首先我们先从最简单的来，下方演示了git分支的创建和切换的最基本的操作，具体步骤如下：1》git branch <分支名>： 首先使用 git branch bugfix01，在当前分支也就是master分支上创建了一个名为bugfix01的新分支。2》git checkout <分支名> : 然后使用 git checkout bugfix01 命令来切换到我们新创建的bugfix01的新分支上。3》git commit : 最后使用 git commit 命令在新的分支上进行代码提交。
+
+2、创建并切换分支1》git checkout -b <分支名>： 首先使用 git checkout -b bugfix02 命令在当前所在分支bugfix01上创建一个新的分支并且切换到新创建的bugfix02上。2》git commit : 然后就可以使用 git commit 在新的分支 bugfix02 上进行提交了。
+
+二、分支的合并与删除以及冲突解决1、分支的合并-merge首先使用 git checkout master命令切换到master分支上。然后使用 git merge bugfix01 命令将 bugfix01 分支的修改合入到master分支上，在合入成功后会将合入后的新文件进行提交，此刻会有一个新的commit号，也就对应着下方的C9。然后使用 git merge bugfix02，在将 bugfix02上的修改合入到master分支上，merge 对应的commit号为C10。最后还是可以在master分支上进行正常提交的。
+
+2、分支的删除上面可以看到，虽然 bugfix01 和 bugfix02 的分支已经被合入到master分支上了，但是这两个分支还是存在的。如果我们不需要这两个分支指针了，可以将两个分支指针进行删除：首先使用 git branch -d bugfix01对分支 bugfix01 进行删除。然后使用 git branch -d bugfix02 对分支 bugfix02 进行删除。操作上来看对分支的删除只是删除的指向该commit号的指针，并不会删除其相关的提交号, 在日志中仍然可以找到之前的commit记录，也仍然可以在该commit上创建新的分支。如果你想删除远端的分支的话，那么得使用 $ git push origin --delete <分支名> 了。
